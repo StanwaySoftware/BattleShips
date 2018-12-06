@@ -43,17 +43,15 @@ namespace Battleships.Tests
             var boardSquares = new Dictionary<Point, BoardSquare>();
             var dummyShip = new Ship();
 
-            for (var i = 1; i <= boardSize.Width; i++)
+            for (var x = 1; x <= boardSize.Width; x++)
+            for (var y = 1; y <= boardSize.Height; y++)
             {
-                for (var j = 1; j <= boardSize.Height; j++)
+                var point = new Point(x, y);
+                var ship = emptySquares.Contains(point) ? null : dummyShip;
+                boardSquares.Add(point, new BoardSquare
                 {
-                    var point = new Point(i, j);
-                    var ship = emptySquares.Contains(point) ? null : dummyShip;
-                    boardSquares.Add(point, new BoardSquare
-                    {
-                        Ship = ship
-                    });
-                }
+                    Ship = ship
+                });
             }
 
             return boardSquares;

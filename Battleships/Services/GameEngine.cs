@@ -46,16 +46,15 @@ namespace Battleships.Services
             try
             {
                 Initialise(boardSize, shipRequests);
-                _gameRenderer.RenderMessage("Game started.");
+                _gameRenderer.RenderMessage("Battleships");
+                _gameRenderer.RenderMessage($"Choose a location from a1 to {(char)(96 + boardSize.Height)}{boardSize.Width}");
                 GameLoop();
-                _gameRenderer.RenderMessage("You win.");
+                _gameActionReader.GetAction("You win. Press Enter to close.");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error playing game");
             }
-
-            _gameActionReader.GetAction("Game Over. Press Enter to close.");
         }
 
         private void GameLoop()
@@ -66,7 +65,7 @@ namespace Battleships.Services
 
                 //Could add action to quit
                 var location = _gameActionReader.GetAction("Enter a location:");
-                var response = _shotService.ShootBoardSquare(location, _gameBoard);
+                var response = _shotService.Shoot(location, _gameBoard);
 
                 _gameRenderer.RenderMessage(response);
             }

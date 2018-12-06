@@ -76,6 +76,7 @@ namespace Battleships.Services
                     continue;
                 }
 
+                //Find random start position in range
                 var startIndex = _random.Next(emptyGroup.Start, emptyGroup.End - shipSize + 1);
 
                 return (spaceFound: true, blockIndex, startIndex);

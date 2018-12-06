@@ -10,12 +10,15 @@ namespace Battleships.Services
     {
         public IEnumerable<Ship> Build(IEnumerable<ShipRequest> shipRequests)
         {
-            return shipRequests.SelectMany(x => Enumerable.Range(1, x.Quantity).Select(y => new Ship
-            {
-                Type = x.Type,
-                Size = x.Size,
-                PointsHit = new HashSet<Point>(),
-            })).ToList();
+            return shipRequests.SelectMany(x => 
+                        Enumerable.Range(1, x.Quantity)
+                                    .Select(y => new Ship
+                                    {
+                                        Type = x.Type,
+                                        Size = x.Size,
+                                        PointsHit = new HashSet<Point>(),
+                                    })
+                         ).ToList();
         }
     }
 }

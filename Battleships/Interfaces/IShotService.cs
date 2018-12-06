@@ -4,6 +4,6 @@ namespace Battleships.Interfaces
 {
     public interface IShotService
     {
-        string ShootBoardSquare(string location, GameBoard gameBoard);
+        string Shoot(string location, GameBoard gameBoard);
     }
 }

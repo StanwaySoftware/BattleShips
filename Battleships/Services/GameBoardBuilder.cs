@@ -10,12 +10,10 @@ namespace Battleships.Services
         public GameBoard Build(Size boardSize)
         {
             var squares = new Dictionary<Point, BoardSquare>();
-            for (var i = 1; i <= boardSize.Height; i++)
+            for (var x = 1; x <= boardSize.Height; x++)
+            for (var y = 1; y <= boardSize.Width; y++)
             {
-                for (var j = 1; j <= boardSize.Width; j++)
-                {
-                    squares.Add(new Point(i, j), new BoardSquare());
-                }
+                squares.Add(new Point(x, y), new BoardSquare());
             }
 
             return new GameBoard
